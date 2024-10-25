@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_documents_shared_search" model="ir.ui.view">
+        <field name="name">documents.shared.search</field>
+        <field name="model">documents.shared</field>
+        <field name="arch" type="xml">
+            <search string="Buscar documentos compartidos">
+                <searchpanel>
+                    <field name="folder_id" string="Carpeta"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -40,6 +40,7 @@
                             <field name="author_id" readonly="1"/>
                             <field name="type"/>
                             <field name="date" readonly="1"/>
+                            <field name="folder_id"/>
                         </group>
                         <group string="Contenido">
                             <field name="type_file" />

@@ -21,6 +21,7 @@
         'views/documents_shared.xml',
         'views/documents_review.xml',
         'views/documents_file.xml',
+        'views/documents_search.xml',
     ],
     'assets': {
         'web.assets_backend': [
