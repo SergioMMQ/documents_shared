@@ -1,0 +1,57 @@
+<odoo>
+    <data>
+        <!-- Vista List para Revisiones -->
+        <record id="view_documents_review_list" model="ir.ui.view">
+            <field name="name">documents.review.list</field>
+            <field name="model">documents.review</field>
+            <field name="arch" type="xml">
+                <tree string="Revisiones">
+                    <field name="name"/>
+                    <field name="review"/>
+                    <field name="user_id"/>
+                    <field name="state_review"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Form para Revisiones -->
+        <record id="view_documents_review_form" model="ir.ui.view">
+            <field name="name">documents.review.form</field>
+            <field name="model">documents.review</field>
+            <field name="arch" type="xml">
+                <form string="Revisión">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="review"/>
+                            <field name="file"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                        <group string="Estado">
+                            <field name="state_review" widget="statusbar" statusbar_visible="draft,in_progress,approved,rejected"/>
+                        </group>
+                        <group string="Permisos">
+                            <field name="edit_groups_id" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para Revisiones -->
+        <record id="action_documents_review" model="ir.actions.act_window">
+            <field name="name">Revisiones</field>
+            <field name="res_model">documents.review</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_documents_review_list"/>
+        </record>
+
+        <!-- Menú para Revisiones -->
+        <menuitem 
+            id="menu_documents_review" 
+            name="Revisiones" 
+            parent="menu_documents_shared" 
+            action="action_documents_review" 
+            sequence="30"/>
+    </data>
+</odoo>

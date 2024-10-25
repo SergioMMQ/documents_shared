@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <!-- Vista List para Carpetas -->
+        <record id="view_documents_file_list" model="ir.ui.view">
+            <field name="name">documents.file.list</field>
+            <field name="model">documents.file</field>
+            <field name="arch" type="xml">
+                <tree string="Carpetas">
+                    <field name="name"/>
+                    <field name="parent_file"/>
+                    <field name="write_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista Form para Carpetas -->
+        <record id="view_documents_file_form" model="ir.ui.view">
+            <field name="name">documents.file.form</field>
+            <field name="model">documents.file</field>
+            <field name="arch" type="xml">
+                <form string="Carpeta">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="parent_file"/>
+                        </group>
+                        <group string="Contenido">
+                            <field name="child_file" readonly="1"/>
+                            <field name="documents" readonly="1"/>
+                        </group>
+                        <group string="Permisos">
+                            <field name="edit_groups_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para Carpetas -->
+        <record id="action_documents_file" model="ir.actions.act_window">
+            <field name="name">Carpetas</field>
+            <field name="res_model">documents.file</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_documents_file_list"/>
+        </record>
+
+        <!-- Menú para Carpetas -->
+        <menuitem 
+            id="menu_documents_file" 
+            name="Carpetas" 
+            parent="menu_documents_shared" 
+            action="action_documents_file" 
+            sequence="20"/>
+    </data>
+</odoo>

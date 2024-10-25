@@ -1,0 +1,83 @@
+<odoo>
+    <data>
+        <!-- Vista Kanban para Documentos Compartidos -->
+        <record id="view_documents_shared_kanban" model="ir.ui.view">
+            <field name="name">documents.shared.kanban</field>
+            <field name="model">documents.shared</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="author_id"/>
+                    <field name="type"/>
+                    <field name="date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_card">
+                                    <div class="o_kanban_details">
+                                        <strong><field name="name"/></strong>
+                                        <div><field name="author_id"/></div>
+                                        <div><field name="date" widget="date"/></div>
+                                        <div><field name="type"/></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Vista Form para Documentos Compartidos -->
+        <record id="view_documents_shared_form" model="ir.ui.view">
+            <field name="name">documents.shared.form</field>
+            <field name="model">documents.shared</field>
+            <field name="arch" type="xml">
+                <form string="Documentos Compartidos">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="author_id" readonly="1"/>
+                            <field name="type"/>
+                            <field name="date" readonly="1"/>
+                        </group>
+                        <group string="Contenido">
+                            <field name="type_file" />
+                            <field name="type_url" />
+                            <field name="type_image" />
+                            <field name="type_video" />
+                            <field name="type_audio" />
+                        </group>
+                        <group string="Revisiones">
+                            <field name="files"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para Documentos Compartidos -->
+        <record id="action_documents_shared" model="ir.actions.act_window">
+            <field name="name">Documentos Compartidos</field>
+            <field name="res_model">documents.shared</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="view_documents_shared_kanban"/>
+        </record>
+
+        <!-- Menú principal para Documentos -->
+        <menuitem 
+            id="menu_documents_shared" 
+            name="Documentos Compartidos" 
+            web_icon="documents_shared,static/description/icon.png" 
+            sequence="10" 
+        />
+
+        <!-- Menú para Documentos Compartidos -->
+        <menuitem 
+            id="submenu_documents_shared" 
+            name="Documentos" 
+            parent="menu_documents_shared" 
+            action="action_documents_shared" 
+            sequence="10"/>
+    </data>
+</odoo>
